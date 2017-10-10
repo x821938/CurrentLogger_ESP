@@ -1,7 +1,7 @@
 #ifndef _LOGGING_h
 #define _LOGGING_h
 
-#define LOGLEVEL 7
+#define LOGLEVEL 5 // Don't do debugging - then you cant do fast sampling
 #define LOG_TIME_FORMAT 2
 
 #include <Arduino.h>

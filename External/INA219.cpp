@@ -38,7 +38,7 @@
 /* Slightly modified to run on ESP8266 by Alex Skov Jensen */
 
 #include "INA219.h"
-//#include <util/delay.h>
+//#include <util/delay.h> // ASJ coomented this out, not working for ESP8266
 namespace{
 // config. register bit labels
 const uint8_t RST =	15;
@@ -147,7 +147,7 @@ void INA219::configure(  t_range range,  t_gain gain,  t_adc  bus_adc,  t_adc sh
 #define INA_RESET        0xFFFF    // send to CONFIG_R to reset unit
 void INA219::reset(){
   write16(CONFIG_R, INA_RESET);
-  delay(5);
+  delay(5); // ASJ changed this from  _delay_ms(5) which doesn't work on ESP8266
 }
 
 int16_t INA219::shuntVoltageRaw() const {
@@ -282,7 +282,7 @@ void INA219::write16(t_reg a, uint16_t d) const {
   #endif
 
   Wire.endTransmission(); // end transmission
-  delay(1);
+  //delay(1); // ASJ commented this out - allows more readings per second and doesn't look like it's needed
 }
 
 int16_t INA219::read16(t_reg a) const {
