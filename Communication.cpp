@@ -42,7 +42,7 @@ void Communication::sendall( unsigned long timeStamp, uint16_t i2cReadings, floa
 	Udp.beginPacket( REMOTE_IP, REMOTE_PORT );
 	Udp.write( timeTxt );
 	Udp.write( ':' );
-	Udp.write( i2cReadings );
+	Udp.write( i2cReadingsTxt );
 	Udp.write( ':' );
 	Udp.write( voltageTxt );
 	Udp.write( ':' );
